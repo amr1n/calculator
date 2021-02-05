@@ -37,9 +37,24 @@
 	background: inherit;
 	color: inherit;
 	font-family: 'Roboto', sans-serif;
+	font-size: 20px;
 }
 
 .btn{
 	outline: none;
+	cursor: pointer;
+}
+
+.btn:hover{
+	border: 1px solid #e8e8e8;
+}
+
+.fas {
+	color: inherit;
+	font-size: 15px;
+}
+
+.fa-circle {
+	font-size: 5px;
 }
 

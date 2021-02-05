@@ -21,6 +21,6 @@ function operate(a, b, operator) {
 	return operator(a,b);
 }
 
-
+console.log(operate(2,3, add));
 
 
