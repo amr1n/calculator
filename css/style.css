@@ -24,17 +24,21 @@
 	text-align: right;
 	font-size: 35px;
 	margin: 0;
-	margin-right: 5%;
+	margin-right: 10%;
 	padding-top: 8%;
+	letter-spacing: -3px;
 }
 
 .dot{
 	grid-area: dot;
 	text-align: left;
 	padding-left: 40px;
+	padding-bottom: 30px;
+	font-size: 50px !important;
 }
 
-.btn, .display {
+.btn, 
+.display {
 	border: 0;
 	background: inherit;
 	color: inherit;
@@ -58,11 +62,7 @@
 	font-size: 15px;
 }
 
-.fa-circle {
-	font-size: 5px;
-}
-
-.fa-equals {
+.fa-equals { 
 	background: #fcb103;
 	padding: 8px 9px;
 	border-radius: 50%;
