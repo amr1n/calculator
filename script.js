@@ -8,9 +8,9 @@ let equals = document.querySelector(".equals");
 
 let display_value;
 let equation;
-let firstOperand = "";
-let lastOperand = "";
-let solution = "";
+let firstOperand;
+let lastOperand;
+let solution;
 let operator_func;
 let operator;
 
@@ -30,7 +30,7 @@ function divide(a, b) {
 	if (b != 0) {
 		return a / b;
 	}
-} 
+}
 
 function mod(a, b) {
 	return a % b;
@@ -38,31 +38,42 @@ function mod(a, b) {
 
 function operate(a, b, operator) {
 	a = Number(a);
-	b = Number(b);
-	console.log(a, b);
+	b = Number(b); 
 	return operator(a, b);
 }
 
 function clear() { 
 	display.textContent = 0;
 	equation_display.textContent = 0;
+	solution = 0;
 }
 
 
 function evaluate() {
+	if (firstOperand === undefined || operator === undefined) {
+		return;
+	}
+
 	if (operator) {
 		lastperand = display_value;
 		display.textContent = "";
 	}
-	console.log(firstOperand, lastperand);
+
+	if (lastperand == 0) {
+		display.textContent = "You can't divide by 0!!";
+		return;
+	} 
 
 	solution = operate(firstOperand, lastperand, operator_func);
 
-	display.textContent = solution;
-	return solution;
+	if (Number.isInteger(solution)) {
+		display.textContent = solution;
+	}else {
+		display.textContent = solution.toFixed(1); 
+	}	
 }
 
-
+//get numbers and set display to that number(s) and display equation;
 numbers.forEach(num => {
 	num.addEventListener("click", () => {
 		if (display.textContent == 0) {
@@ -93,27 +104,27 @@ operators.forEach(operator_sign => {
 
 		switch(sign) {
 			case "plus":
-				operator = "+";
+				operator = " + ";
 				operator_func = add;
 			break;
 
 			case "minus":
-				operator = "-";
+				operator = " - ";
 				operator_func = subtract;
 			break;
 
 			case "times":
-				operator = "×";
+				operator = " x ";
 				operator_func = multiply;
 			break;
 
 			case "divide":
-				operator = "÷";
+				operator = " / ";
 				operator_func = divide;
 			break;
 
 			case "modulo":
-				operator = "%";
+				operator = " % ";
 				operator_func = mod;
 			break;
 
@@ -123,6 +134,10 @@ operators.forEach(operator_sign => {
 		if (display_value != undefined) {
 			firstOperand = display_value;
 			display.textContent = "";
+		}
+
+		if (solution != undefined) {
+			firstOperand = solution;
 		}
 
 		if (equation != undefined) {

@@ -20,12 +20,15 @@
 	grid-area: display;
 }
 
+.result_display {
+	padding-bottom: 5%;
+}
+
 .result_display, .equation_display {
 	text-align: right;
 	margin: 0;
 	margin-right: 10%;
-	padding-top: 8%;
-	/*letter-spacing: -1px;*/
+	padding-top: 5%;
 }
 
 
