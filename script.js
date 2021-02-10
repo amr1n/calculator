@@ -1,15 +1,16 @@
-let numbers = document.querySelectorAll('.num'); 
-let operators = document.querySelectorAll('.operator');
-let display = document.querySelector('.result_display');
-let equation_display = document.querySelector('.equation_display');
-let all_clear = document.querySelector('.clear');
-let equals = document.querySelector('.equals');
+let numbers = document.querySelectorAll(".num"); 
+let operators = document.querySelectorAll(".operator");
+let display = document.querySelector(".result_display");
+let equation_display = document.querySelector(".equation_display");
+let all_clear = document.querySelector(".clear");
+let equals = document.querySelector(".equals");
 
 
 let display_value;
 let equation;
-let firstOperand;
-let lastOperand;
+let firstOperand = "";
+let lastOperand = "";
+let solution = "";
 let operator_func;
 let operator;
 
@@ -36,6 +37,9 @@ function mod(a, b) {
 }
 
 function operate(a, b, operator) {
+	a = Number(a);
+	b = Number(b);
+	console.log(a, b);
 	return operator(a, b);
 }
 
@@ -47,30 +51,29 @@ function clear() {
 
 function evaluate() {
 	if (operator) {
-		lastOperand = display_value;
-		display.textContent = " ";
+		lastperand = display_value;
+		display.textContent = "";
 	}
-	
-	let a = Number(firstOperand);
-	let b = Number(lastOperand);
-	result = operate(a, b, operator_func);
+	console.log(firstOperand, lastperand);
 
-	display.textContent = result;
-	return result;
+	solution = operate(firstOperand, lastperand, operator_func);
+
+	display.textContent = solution;
+	return solution;
 }
 
 
 numbers.forEach(num => {
-	num.addEventListener('click', () => {
+	num.addEventListener("click", () => {
 		if (display.textContent == 0) {
-			display.textContent = " ";
+			display.textContent = "";
 			display_value = display.textContent += num.textContent;
 		}else {
 			display_value = display.textContent += num.textContent;
 		}
 
 		if (equation_display.textContent == 0) {
-			equation_display.textContent = " ";
+			equation_display.textContent = "";
 		    equation = equation_display.textContent += num.textContent;
 		}else {
 			equation = equation_display.textContent += num.textContent;
@@ -82,35 +85,35 @@ numbers.forEach(num => {
 });
 
 operators.forEach(operator_sign => {
-	operator_sign.addEventListener('click', () => {
-		let data;
+	operator_sign.addEventListener("click", () => {
+		let sign;
 		if (operator_sign.key === undefined) {
-			data = operator_sign.id;
+			sign = operator_sign.id;
 		}
 
-		switch(data) {
-			case 'plus':
-				operator = '+';
+		switch(sign) {
+			case "plus":
+				operator = "+";
 				operator_func = add;
 			break;
 
-			case 'minus':
-				operator = '-';
+			case "minus":
+				operator = "-";
 				operator_func = subtract;
 			break;
 
-			case 'times':
-				operator = 'x';
+			case "times":
+				operator = "×";
 				operator_func = multiply;
 			break;
 
-			case 'divide':
-				operator = '/';
+			case "divide":
+				operator = "÷";
 				operator_func = divide;
 			break;
 
-			case 'modulo':
-				operator = '%';
+			case "modulo":
+				operator = "%";
 				operator_func = mod;
 			break;
 
@@ -119,9 +122,9 @@ operators.forEach(operator_sign => {
 
 		if (display_value != undefined) {
 			firstOperand = display_value;
-			display.textContent = " ";
+			display.textContent = "";
 		}
-		
+
 		if (equation != undefined) {
 			equation_display.textContent = equation += operator;
 		}
@@ -129,7 +132,7 @@ operators.forEach(operator_sign => {
 	});
 });
 
-all_clear.addEventListener('click', clear);
+all_clear.addEventListener("click", clear);
 
-equals.addEventListener('click', evaluate);
-
+equals.addEventListener("click", evaluate);
+ 
