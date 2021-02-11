@@ -45,7 +45,9 @@ function operate(a, b, operator) {
 function clear() { 
 	display.textContent = 0;
 	equation_display.textContent = 0;
-	solution = 0;
+	firstOperand = "";
+	lastperand = "";
+	operator = null;
 }
 
 
