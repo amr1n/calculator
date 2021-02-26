@@ -47,6 +47,7 @@ function clear() {
 	equation_display.textContent = 0;
 	firstOperand = "";
 	lastperand = "";
+	solution = "";
 	operator = null;
 }
 
