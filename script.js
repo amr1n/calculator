@@ -139,7 +139,7 @@ operators.forEach(operator_sign => {
 			display.textContent = "";
 		}
 
-		if (solution != undefined) {
+		if (solution) {
 			firstOperand = solution;
 		}
 
